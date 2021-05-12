@@ -1,4 +1,4 @@
-package me.ikevoodoo.data;
+package me.ikevoodoo.datamanager;
 
 import java.util.ArrayList;
 import java.util.List;

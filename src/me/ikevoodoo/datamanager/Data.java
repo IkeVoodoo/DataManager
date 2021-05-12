@@ -1,6 +1,6 @@
-package me.ikevoodoo.data;
+package me.ikevoodoo.datamanager;
 
-import me.ikevoodoo.data.load.DataLoader;
+import me.ikevoodoo.datamanager.load.DataLoader;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package me.ikevoodoo.data.examples;
+package me.ikevoodoo.datamanager.examples;
 
-import me.ikevoodoo.data.Data;
-import me.ikevoodoo.data.DataFragment;
-import me.ikevoodoo.data.DataManager;
+import me.ikevoodoo.datamanager.Data;
+import me.ikevoodoo.datamanager.DataFragment;
+import me.ikevoodoo.datamanager.DataManager;
 
 /**
  * An example depicting how to load data from a file.

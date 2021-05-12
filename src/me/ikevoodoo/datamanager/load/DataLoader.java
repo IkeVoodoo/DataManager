@@ -1,7 +1,7 @@
-package me.ikevoodoo.data.load;
+package me.ikevoodoo.datamanager.load;
 
-import me.ikevoodoo.data.Data;
-import me.ikevoodoo.data.DataFragment;
+import me.ikevoodoo.datamanager.Data;
+import me.ikevoodoo.datamanager.DataFragment;
 
 import java.io.BufferedReader;
 import java.io.File;

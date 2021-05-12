@@ -1,7 +1,7 @@
-package me.ikevoodoo.data.save;
+package me.ikevoodoo.datamanager.save;
 
-import me.ikevoodoo.data.Data;
-import me.ikevoodoo.data.DataFragment;
+import me.ikevoodoo.datamanager.Data;
+import me.ikevoodoo.datamanager.DataFragment;
 
 import java.io.File;
 import java.io.FileWriter;

@@ -1,7 +1,7 @@
-package me.ikevoodoo.data;
+package me.ikevoodoo.datamanager;
 
-import me.ikevoodoo.data.load.DataLoader;
-import me.ikevoodoo.data.save.DataSaver;
+import me.ikevoodoo.datamanager.load.DataLoader;
+import me.ikevoodoo.datamanager.save.DataSaver;
 
 import java.io.File;
 import java.nio.file.Path;
