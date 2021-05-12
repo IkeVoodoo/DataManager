@@ -34,6 +34,30 @@ However, you CAN fork this repository and submit a Pull Request
 ## Usage
 - Go to the [Releases Section](https://github.com/IkeVoodoo/DataManager/releases) and download the latest JAR file
 - Maven/Gradle coming soon TM
+
+## Examples
+Comments
+```
+# This is a comment
+# I work even inside a instruction!
+# You can also add a \ behind me to exclude this a as a comment!
+```
+
+<br></br>
+Instructions
+```cpp
+# Start a fragment with an id and a name.
+# The id is required, name is not.
+>FRAG <id> [name]
+str: Hey!!! # String
+int: 40 # Integers
+
+# Booleans are special, as if you give them "true"
+# they will represent true, otherwise any other input is false
+bool: true
+# End a fragment
+>END
+```
   
 ## Developers
 
