@@ -1,6 +1,6 @@
 package me.ikevoodoo.data;
 
-import me.ikevoodoo.data.loader.DataLoader;
+import me.ikevoodoo.data.load.DataLoader;
 import me.ikevoodoo.data.save.DataSaver;
 
 import java.io.File;

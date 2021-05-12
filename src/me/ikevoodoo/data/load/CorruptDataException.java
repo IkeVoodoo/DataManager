@@ -1,4 +1,4 @@
-package me.ikevoodoo.data.loader;
+package me.ikevoodoo.data.load;
 
 /**
  * Exception thrown by the DataLoader when a corrupt instruction is found.

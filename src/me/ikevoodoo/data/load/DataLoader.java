@@ -1,4 +1,4 @@
-package me.ikevoodoo.data.loader;
+package me.ikevoodoo.data.load;
 
 import me.ikevoodoo.data.Data;
 import me.ikevoodoo.data.DataFragment;

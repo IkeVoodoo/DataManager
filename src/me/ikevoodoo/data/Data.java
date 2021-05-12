@@ -1,11 +1,10 @@
 package me.ikevoodoo.data;
 
-import me.ikevoodoo.data.loader.DataLoader;
+import me.ikevoodoo.data.load.DataLoader;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Container class for DataFragment, returned by {@link DataLoader#loadData(File)}
