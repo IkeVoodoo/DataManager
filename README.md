@@ -39,4 +39,8 @@ However, you CAN fork this repository and submit a Pull Request
 
 - IkeVoodoo
 
+<<<<<<< HEAD
 Shh, there is only me for now!
+=======
+Shh, there is only me for now!
+>>>>>>> origin/master
