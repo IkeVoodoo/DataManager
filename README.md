@@ -5,6 +5,8 @@ but did not want to bother with creating a system for it?
 
 Well fear not! This project has got you covered!
 
+NOTE: This project was made in 30 minutes and is not yet complete, it might work but its not guaranteed.
+
 ## Features
 
 - Saved data will be converted to instructions which are easy to read.
