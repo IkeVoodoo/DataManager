@@ -9,7 +9,7 @@ import me.ikevoodoo.datamanager.DataManager;
 public class SaveDataExample {
 
     public static void main(String[] args) {
-        Data data = new Data(); // Get some data.
+        Data data = // Get some data.
 
         // Save the data.
         DataManager.saveData(data, "C:\\My Files\\SaveExampleFile.txt");
