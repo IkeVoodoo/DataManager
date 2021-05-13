@@ -29,9 +29,7 @@ in terms of efficiency and stability
 
 ## Where can I use this?
 
-- Everywhere! As long as you don't edit it.
-However, you CAN fork this repository and submit a Pull Request
-  if you feel like you improved the library.
+- Everywhere! You can edit it for personal use, and if you add a feature you think is good, please send a Pull Request
 
 ## Usage
 - Go to the [Releases Section](https://github.com/IkeVoodoo/DataManager/releases) and download the latest JAR file
