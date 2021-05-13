@@ -6,6 +6,9 @@ import me.ikevoodoo.datamanager.DataFragment;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
 
 public class DataSaver {
@@ -18,27 +21,33 @@ public class DataSaver {
      * @see File
      */
     public void saveData(Data data, File file) {
+        if(file.mkdirs())
+            System.out.println("Created the file's parent directories since they did not exist!");
         try(PrintWriter clearer = new PrintWriter(new FileWriter(file, false))) {
             clearer.print("");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try(PrintWriter printWriter = new PrintWriter(file)) {
+        StringBuilder builder = new StringBuilder();
+        long start = System.nanoTime();
+        try(FileChannel channel = new RandomAccessFile(file, "rw").getChannel()) {
             for(DataFragment fragment : data.getFragments()) {
-                printWriter.println(">FRAG " + fragment.id + " " + fragment.name);
+                builder.append(">FRAG ").append(fragment.id).append(" ").append(fragment.name).append('\n');
                 for(Object obj : fragment.getObjects()) {
                     if(obj instanceof String)
-                        printWriter.println("str: " + obj);
+                        builder.append("str: ").append(obj).append('\n');
                     else if (obj instanceof Integer)
-                        printWriter.println("int: " + obj);
+                        builder.append("int: ").append(obj).append('\n');
                     else if (obj instanceof Boolean)
-                        printWriter.println("bool: " + obj);
+                        builder.append("bool: ").append(obj).append('\n');
                 }
-                printWriter.println(">END\n");
+                builder.append(">END\n\n");
             }
+            channel.map(FileChannel.MapMode.READ_WRITE, 0, builder.length()).put(builder.toString().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(System.nanoTime() - start);
     }
 
 }

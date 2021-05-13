@@ -24,10 +24,13 @@ public class DataFragment {
 
     /**
      * Get the data contained within this fragment.<br>
+     * @return The objects contained within this fragment.
      */
     public List<Object> getObjects() {
         return this.objects;
     }
+
+    public void addObject(Object o) { this.objects.add(o); }
 
     public String toString() {
         return "Name: " + this.name + ", ID: " + this.id;

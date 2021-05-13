@@ -31,6 +31,8 @@ public class Data {
         return this.fragments;
     }
 
+    public void addFragment(DataFragment fragment) { this.fragments.add(fragment); }
+
     /**
      * Gets the fragment with specified id.
      * @param id The id of the fragment.

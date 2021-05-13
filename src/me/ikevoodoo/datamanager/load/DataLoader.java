@@ -6,6 +6,8 @@ import me.ikevoodoo.datamanager.DataFragment;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,38 +26,37 @@ public class DataLoader {
     public Data loadData(File input) {
         Data out = new Data();
         out.corrupt = false;
+        List<Integer> ids = new ArrayList<>();
+        int pos;
+        int i = -1;
+        String line;
+        boolean isReadingFragment = false;
+        DataFragment fragment = new DataFragment();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(input))) {
-            String line;
-            boolean isReadingFragment = false;
-            DataFragment fragment = new DataFragment();
-            List<Integer> ids = new ArrayList<>();
-            int pos;
-            int i = -1;
-
             while((line = bufferedReader.readLine()) != null) {
                 i++;
-                String l = line.stripLeading().stripTrailing();
+                line =  line.stripLeading().stripTrailing();
                 int x = 0;
                 char prev = 0;
-                for(char c : l.toCharArray()) {
+                for(char c : line.toCharArray()) {
                     if(c == comment && prev != '\\') {
-                        l = l.substring(0, Math.max(x - 1, 0));
+                        line = line.substring(0, Math.max(x - 1, 0)).stripTrailing();
                         break;
                     }
                     prev = c;
                     x++;
                 }
-                if(l.isBlank()) continue;
+                if(line.isBlank()) continue;
 
-                if(l.startsWith(fragStart)) {
+                if(line.startsWith(fragStart)) {
                     if(isReadingFragment) continue;
-                    isReadingFragment = true;
-                    if(l.stripTrailing().length() == fragStart.length()) {
+                    if(line.length() == fragStart.length()) {
                         fragment.name = "UNNAMED_FRAGMENT";
                         fragment.id = -1;
                         continue;
                     }
-                    String data = l.substring(fragStart.length() + 1).stripLeading();
+                    isReadingFragment = true;
+                    String data = line.substring(fragStart.length() + 1).stripLeading();
                     if((pos = data.indexOf(' ')) != -1) {
                         String unprocessedID = data.substring(0, pos);
                         if (unprocessedID.isBlank())
@@ -76,7 +77,7 @@ public class DataLoader {
                             }
                         }
 
-                        String name = l.substring(fragStart.length() + 1 + unprocessedID.length() + 1);
+                        String name = line.substring(fragStart.length() + 1 + unprocessedID.length() + 1);
                         if(name.isBlank())
                             fragment.name = "UNNAMED_FRAGMENT";
                         else
@@ -87,7 +88,7 @@ public class DataLoader {
                     }
                 }
 
-                if(l.startsWith(fragEnd)) {
+                if(line.startsWith(fragEnd)) {
                     if(!isReadingFragment) continue;
                     isReadingFragment = false;
                     if(fragment.getObjects().size() > 0)
@@ -97,7 +98,7 @@ public class DataLoader {
                 }
 
                 if(isReadingFragment)
-                    parse(l, fragment, i);
+                    parse(line, fragment, i);
             }
         } catch (Exception e) {
             if(e instanceof CorruptDataException)
