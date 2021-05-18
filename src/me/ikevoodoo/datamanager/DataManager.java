@@ -1,9 +1,13 @@
 package me.ikevoodoo.datamanager;
 
+import me.ikevoodoo.datamanager.api.CustomType;
+import me.ikevoodoo.datamanager.api.TypeRegistry;
+import me.ikevoodoo.datamanager.load.CorruptDataException;
 import me.ikevoodoo.datamanager.load.DataLoader;
 import me.ikevoodoo.datamanager.save.DataSaver;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 
 /**
@@ -30,15 +34,18 @@ public class DataManager {
         DATA_SAVER.saveData(data, new File(path));
     }
 
-    public static Data loadData(File file) {
+    public static Data loadData(File file) throws IllegalArgumentException,
+            CorruptDataException, IOException {
         return DATA_LOADER.loadData(file);
     }
 
-    public static Data loadData(Path path) {
+    public static Data loadData(Path path) throws IllegalArgumentException,
+            CorruptDataException, IOException {
         return DATA_LOADER.loadData(path.toFile());
     }
 
-    public static Data loadData(String path) {
+    public static Data loadData(String path) throws IllegalArgumentException,
+            CorruptDataException, IOException {
         return DATA_LOADER.loadData(new File(path));
     }
 

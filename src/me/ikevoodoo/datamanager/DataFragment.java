@@ -15,11 +15,6 @@ public class DataFragment {
      */
     public String name = "UNNAMED_FRAGMENT";
 
-    /**
-     * The id of this fragment, if no ID was provided will default to -1
-     */
-    public int id = -1 ;
-
     private final List<Object> objects = new ArrayList<>();
 
     /**
@@ -33,7 +28,7 @@ public class DataFragment {
     public void addObject(Object o) { this.objects.add(o); }
 
     public String toString() {
-        return "Name: " + this.name + ", ID: " + this.id;
+        return "Name: " + this.name;
     }
 
 }

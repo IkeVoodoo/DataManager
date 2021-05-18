@@ -2,6 +2,7 @@ package me.ikevoodoo.datamanager.save;
 
 import me.ikevoodoo.datamanager.Data;
 import me.ikevoodoo.datamanager.DataFragment;
+import me.ikevoodoo.datamanager.api.TypeRegistry;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,23 +24,22 @@ public class DataSaver {
     public void saveData(Data data, File file) {
         if(file.mkdirs())
             System.out.println("Created the file's parent directories since they did not exist!");
+        if(file.isDirectory() && !file.delete())
+            throw new IllegalStateException("Unable to continue with saving data.");
         try(PrintWriter clearer = new PrintWriter(new FileWriter(file, false))) {
             clearer.print("");
         } catch (Exception e) {
             e.printStackTrace();
         }
         StringBuilder builder = new StringBuilder();
-        long start = System.nanoTime();
         try(FileChannel channel = new RandomAccessFile(file, "rw").getChannel()) {
             for(DataFragment fragment : data.getFragments()) {
-                builder.append(">FRAG ").append(fragment.id).append(" ").append(fragment.name).append('\n');
+                builder.append(">FRAG ").append(fragment.name).append('\n');
                 for(Object obj : fragment.getObjects()) {
-                    if(obj instanceof String)
-                        builder.append("str: ").append(obj).append('\n');
-                    else if (obj instanceof Integer)
-                        builder.append("int: ").append(obj).append('\n');
-                    else if (obj instanceof Boolean)
-                        builder.append("bool: ").append(obj).append('\n');
+                    String name = TypeRegistry.getTypeName(obj.getClass());
+                    if(name == null)
+                        throw new IllegalStateException("Attempting to save unregistered data type: " + obj.getClass());
+                    builder.append(name).append(": ").append(obj).append("\n");
                 }
                 builder.append(">END\n\n");
             }
@@ -47,7 +47,6 @@ public class DataSaver {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(System.nanoTime() - start);
     }
 
 }
