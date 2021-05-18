@@ -12,12 +12,12 @@ in terms of efficiency and stability
 
 ## Are there any restrictions of where i can use this?
 
-- Well yes, and no. You are free to use this project everywhere you like as long as you:
+Well yes, and no. You are free to use this project everywhere you like as long as you:
 - Don't claim the project is yours.
 - Don't re-upload this project elsewhere without my permission.
 - Don't use this for malicious activity.
 
-- However if you edited it, you can claim the changes to be yours and link back to this project
+However if you edited it, you can claim the changes to be yours and link back to this project
 
 
 ## Downloading
