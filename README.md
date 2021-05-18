@@ -3,7 +3,7 @@
 Data manager is a Java library aimed at making saving and loading of data easy, but most importantly, FAST!
 
 
-## Latest Changelog (V0.0.3-PRE)
+## Latest Changelog (v0.0.3-PRE)
 - Added mathematical expression evaluation
 - Addon support (10%)
 - Linking of files
