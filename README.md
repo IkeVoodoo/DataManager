@@ -1,25 +1,8 @@
 # Data Manager
 
-Did you ever need to save or load some data,
-but did not want to bother with creating a system for it?
-
-Well fear not! This project has got you covered!
-
-NOTE: This project was made in 30 minutes and is not yet complete, it might work but its not guaranteed.
-
-## Features
-
-- Saved data will be converted to instructions which are easy to read.
-- Allows for fast and easy storage.
-- You don't have to bother with errors as they are handled by the library.
-- Best of all, it is completely free!
+Data manager is a Java library aimed at making saving and loading of data easy, but most importantly, FAST!
 
 
-## Why?
-
-- To make your life that tiny bit more easy, and allow you to focus
-on whatever you need to do.
-  
 ## Plans
 
 - Well, none currently! I guess only improving this
@@ -27,38 +10,23 @@ in terms of efficiency and stability
   
 - Probably add some features if requested.
 
-## Where can I use this?
+## Are there any restrictions of where i can use this?
 
-- Everywhere! You can edit it for personal use, and if you add a feature you think is good, please send a Pull Request
+- Well yes, and no. You are free to use this project everywhere you like as long as you:
+- Don't claim the project is yours.
+- Don't re-upload this project elsewhere without my permission.
+- Don't use this for malicious activity.
 
-## Usage
+- However if you edited it, you can claim the changes to be yours and link back to this project
+
+
+## Downloading
 - Go to the [Releases Section](https://github.com/IkeVoodoo/DataManager/releases) and download the latest JAR file
 - Maven/Gradle coming soon TM
 
-## Examples
-Comments
-```
-# This is a comment
-# I work even inside a instruction!
-# You can also add a \ behind me to exclude this a as a comment!
-```
+## Usage
+I am currently writing the Wiki pages, please hold on while i write them, for now you should be able to use your IDE's auto completition.
 
-<br></br>
-Instructions
-```
-# Start a fragment with an id and a name.
-# The id is required, name is not.
->FRAG <id> [name]
-str: Hey!!! # String
-int: 40 # Integers
-
-# Booleans are special, as if you give them "true"
-# they will represent true, otherwise any other input is false
-bool: true
-# End a fragment
->END
-```
-  
 ## Developers
 
 - IkeVoodoo
