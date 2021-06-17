@@ -2,13 +2,19 @@
 
 Data manager is a Java library aimed at making saving and loading of data easy, but most importantly, FAST!
 
+[Trello](https://trello.com/b/eJQll3AP/dataloader-j)
 
-## Plans
 
-- Well, none currently! I guess only improving this
-in terms of efficiency and stability
-  
-- Probably add some features if requested.
+## Latest Changelog (v0.0.3-pre)
+- Added mathematical expression evaluation
+- Addon support (10%)
+- Linking of files
+- #define and #undefine
+- References
+- Merging
+- Improved data saver to work with custom data types
+- Tiny bit of refactoring
+- Removed Fragment ID's
 
 ## Are there any restrictions of where i can use this?
 
