@@ -22,7 +22,7 @@ public class DataSaver {
      * @see File
      */
     public void saveData(Data data, File file) {
-        if(file.mkdirs())
+        if(file.getParentFile().mkdirs())
             System.out.println("Created the file's parent directories since they did not exist!");
         if(file.isDirectory() && !file.delete())
             throw new IllegalStateException("Unable to continue with saving data.");
