@@ -5,16 +5,17 @@ Data manager is a Java library aimed at making saving and loading of data easy, 
 [Trello](https://trello.com/b/eJQll3AP/dataloader-j)
 
 
-## Latest Changelog (v0.0.3-pre)
-- Added mathematical expression evaluation
-- Addon support (10%)
-- Linking of files
-- #define and #undefine
-- References
-- Merging
-- Improved data saver to work with custom data types
-- Tiny bit of refactoring
-- Removed Fragment ID's
+## Latest Changelog (V0.0.4-PRE-EXP)
+
+- Added ">" operator, "<" operator and "=" operator. Currently they do not return booleans.
+- Added square brackets and curly brackets to the ExpressionCalculator.
+- Improved how priority is checked in expressions.
+- Added DataTransformer class to serialize/deserialize a Data object to/from json.
+- Added "#option".
+- Improved performance in the loading.
+
+- ## Notes
+- A version ending with "-EXP" indicates the version is experimental, use at your own risk.
 
 ## Are there any restrictions of where i can use this?
 
