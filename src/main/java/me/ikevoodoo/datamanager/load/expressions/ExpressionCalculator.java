@@ -18,13 +18,40 @@ public interface ExpressionCalculator {
         Stack<Character> operators = new Stack<>();
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < characters.length; i++) {
-            if (characters[i] >= '0' && characters[i] <= '9') {
-                while (i < characters.length && characters[i] >= '0' && characters[i] <= '9')
+            if (isNumber(characters, i)) {
+                if(characters[Math.max(i, 1) - 1] == '-') {
+                    builder.append('-');
+                    i++;
+                }
+                while (i < characters.length && isNumber(characters, i))
                     builder.append(characters[i++]);
-
                 numbers.push(Integer.parseInt(builder.toString()));
                 builder.delete(0, builder.length());
                 i--;
+            } else if (characters[i] == '{')
+                operators.push(characters[i]);
+            else if (characters[i] == '}') {
+                while (operators.peek() != '{')
+                    numbers.push(
+                            calc(
+                                    operators.pop(),
+                                    numbers.pop(),
+                                    numbers.pop()
+                            )
+                    );
+                operators.pop();
+            } else if (characters[i] == '[')
+                operators.push(characters[i]);
+            else if (characters[i] == ']') {
+                while (operators.peek() != '[')
+                    numbers.push(
+                            calc(
+                                    operators.pop(),
+                                    numbers.pop(),
+                                    numbers.pop()
+                            )
+                    );
+                operators.pop();
             } else if (characters[i] == '(')
                 operators.push(characters[i]);
             else if (characters[i] == ')') {
@@ -60,8 +87,6 @@ public interface ExpressionCalculator {
             );
         return numbers.pop();
     }
-
-
 
 
 }

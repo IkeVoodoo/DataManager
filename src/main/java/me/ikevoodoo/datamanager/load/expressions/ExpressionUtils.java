@@ -11,6 +11,12 @@ public class ExpressionUtils {
     private static final HashMap<Character, Integer> precedence = new HashMap<>();
 
     static {
+        precedence.put('?', 5);
+
+        precedence.put('=', 4);
+
+        precedence.put('>', 3);
+        precedence.put('<', 3);
         precedence.put('*', 3);
         precedence.put('/', 3);
         precedence.put('^', 3);
@@ -27,8 +33,7 @@ public class ExpressionUtils {
     }
 
     protected static boolean isOperator(char c) {
-        return c == '+' || c == '-'
-                || c == '*' || c == '/' || c == '^' || c == '%';
+        return precedence.containsKey(c);
     }
 
     protected static int calc(char operator, int a, int b) {
@@ -47,9 +52,30 @@ public class ExpressionUtils {
                 return (int)Math.pow(a, b);
             case '%':
                 return b % a;
+            case '?':
+                if(a == b) return 0;
+                if(a < b)
+                    return b - a;
+                return a - b;
+            case '=':
+                return a == b ? 1 : 0;
+            case '>':
+                return a > b ? 1 : 0;
+            case '<':
+                return a < b ? 1 : 0;
         }
 
         return 0;
+    }
+
+
+
+    protected static boolean isNumber(char[] characters, int index) {
+        char c = characters[index];
+        char next = characters[Math.min(characters.length - 1, index + 1)];
+        return (c == '+' && next >= '0' && next <= '9')
+                || (c == '-' && next >= '0' && next <= '9')
+                || (c >= '0' && c <= '9');
     }
 
 }

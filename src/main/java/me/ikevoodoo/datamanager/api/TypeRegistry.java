@@ -1,5 +1,7 @@
 package me.ikevoodoo.datamanager.api;
 
+import me.ikevoodoo.datamanager.load.DataLoader;
+
 import java.util.HashMap;
 
 /**
@@ -29,6 +31,20 @@ public class TypeRegistry {
         }
         else throw new IllegalArgumentException("Cannot try to add already existing type!");
     }
+
+    /**
+     * Used by the DataLoader to initialize default types.
+     */
+    public static void addDefaultType(String name, CustomType type, Class<?> returnType) throws IllegalArgumentException {
+        if(StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).getCallerClass() != DataLoader.class)
+            throw new IllegalCallerException("Only the DataLoader class can call this method.");
+        if(!types.containsKey(name) && !typeNames.containsKey(returnType)) {
+            types.put(name, type);
+            typeNames.put(returnType, name);
+        }
+        else throw new IllegalArgumentException("Cannot try to add already existing type!");
+    }
+
 
     /**
      * Set an alias for a CustomType. Can be called as a keyword using #define [TypeName] [Alias]
